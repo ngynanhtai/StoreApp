@@ -7,7 +7,10 @@ export default function ProductListItem(props: any) {
   return (
     <View style={styles.shadow}>
       <View style={styles.container}>
-        <Image style={styles.image} source={{ uri: product.images[0].url }} />
+        <View style={styles.imageWrapper}>
+          <Image style={styles.image} source={{ uri: product.images[0].url }} />
+        </View>
+
         <View style={styles.info}>
           <Text style={styles.title}>{product.name}</Text>
           <View style={styles.priceRow}>
@@ -44,6 +47,9 @@ const styles = StyleSheet.create({
     height: 150,
     width: "100%",
     resizeMode: "contain",
+  },
+  imageWrapper: {
+    paddingHorizontal: 4,
   },
   info: {
     padding: 8,

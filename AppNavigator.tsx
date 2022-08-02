@@ -1,15 +1,27 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Categories from "./screens/Categories";
 import Category from "./screens/Category";
+import Cart from "./screens/Cart";
+import Order from "./screens/Order";
+import Settings from "./screens/Settings";
 
-const AppNavigator = createStackNavigator({
-    Categories: {
-        screen: Categories
-    },
-    Category: {
-        screen: Category
-    }
-})
+const ShoppingStack = createStackNavigator({
+  Categories,
+  Category,
+});
 
-export default AppNavigator;
+const CartStack = createStackNavigator({
+  Cart,
+});
+
+const OrderStack = createStackNavigator({
+  Order,
+});
+
+const SettingsStack = createStackNavigator({
+  Settings,
+});
+
+export default ShoppingStack;

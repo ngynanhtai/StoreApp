@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { FOOD_IMAGES } from "../mock-db/image.js";
+import { FOOD_IMAGES } from "../mock-db/image.tsx";
 
 export default function CategoryListItem(props: any) {
   const { category, onPress } = props;
@@ -19,7 +19,7 @@ export default function CategoryListItem(props: any) {
     <TouchableOpacity onPress={onPress} activeOpacity={0.5}>
       <View style={styles.container}>
         <Text style={styles.title}>{category.name}</Text>
-        <Image style={styles.categoryImage} source={imageSource} />
+        <Image style={styles.categoryImage} source={{ uri: imageSource }} />
       </View>
     </TouchableOpacity>
   );

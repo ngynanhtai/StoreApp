@@ -1,4 +1,4 @@
-export const FOOD_IMAGES = {
+export const FOOD_IMAGES: any = {
   1: {
     imgName: "Chicken",
     uri: require("../assets/icon01.png"),

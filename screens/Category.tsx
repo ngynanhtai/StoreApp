@@ -1,29 +1,23 @@
 import { StyleSheet, View, FlatList } from "react-native";
-import React, { useState } from "react";
-import Icon01 from "../assets/icon01.png";
-import Icon02 from "../assets/icon02.png";
-import Icon03 from "../assets/icon03.png";
+import React from "react";
 import ProductListItem from "../components/ProductListItem";
 import axios from "axios";
 
-export default class Category extends React.Component<any, any> {
-  static navigationOptions = ({ navigation }: any) => {
-    return {
-      title: navigation.getParam("categoryName"),
-    };
-  };
+export default class CategoryScreen extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    const { navigation } = props;
+    const { route, navigation } = props;
+    const { categoryId, categoryName } = route.params;
+    navigation.setOptions({ title: categoryName });
     this.state = {
-      categoryId: navigation.getParam("categoryId"),
+      categoryId: categoryId,
       products: [],
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     axios
-      .get("http://localhost:3000/products?category=" + this.state.categoryId)
+      .get("/products?category=" + this.state.categoryId)
       .then((res) => {
         this.setState({
           products: res.data,

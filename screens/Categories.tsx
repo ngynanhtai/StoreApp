@@ -3,7 +3,7 @@ import CategoryListItem from "../components/CategoryListItem";
 import React from "react";
 import axios from "axios";
 
-export default class Categories extends React.Component<any, any> {
+export default class CategoriesScreen extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -11,9 +11,9 @@ export default class Categories extends React.Component<any, any> {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     axios
-      .get("http://localhost:3000/categories")
+      .get("/categories")
       .then((res) => {
         this.setState({
           categories: res.data,
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
     backgroundColor: "#fff",
     justifyContent: "center",
+    paddingTop: 16,
   },
   flatList: {
     paddingLeft: 16,
