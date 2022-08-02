@@ -1,0 +1,73 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Fried Chicken"
+        },
+        {
+            "id": 2,
+            "name": "Pizza"
+        },
+        {
+            "id": 3,
+            "name": "Steak"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "images": [
+                {
+                    "url": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/11/2/0/DV1510H_fried-chicken-recipe-10_s4x3.jpg.rend.hgtvcom.616.462.suffix/1568222255998.jpeg"
+                }
+            ],
+            "name": "Korean Chicken Fried",
+            "price": 300000,
+            "category": 1
+        },
+        {
+            "id": 2,
+            "images": [
+                {
+                    "url": "https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Crispy-Fried-Chicken_EXPS_TOHJJ22_6445_DR%20_02_03_11b.jpg"
+                }
+            ],
+            "name": "Original Chicken Fried",
+            "price": 250000,
+            "category": 1
+        },
+        {
+            "id": 3,
+            "images": [
+                {
+                    "url": "https://tikibook.com/upload/news/032021/steak-bin-pizza-thu-duc-1.jpg"
+                }
+            ],
+            "name": "Cheese Pizza",
+            "price": 300000,
+            "category": 2
+        },
+        {
+            "id": 4,
+            "images": [
+                {
+                    "url": "https://cdn.alongwalker.co/vn/wp-content/uploads/2022/05/24210901/image-top-8-nha-hang-pizza-nhat-dinh-phai-thu-o-quan-hai-ba-trung-165337614178667.jpg"
+                }
+            ],
+            "name": "2 in 1 Pizza",
+            "price": 350000,
+            "category": 2
+        },
+        {
+            "id": 4,
+            "images": [
+                {
+                    "url": "https://www.wikihow.com/images_en/thumb/c/ca/Cook-Steak-in-the-Oven-Step-13.jpg/v4-1200px-Cook-Steak-in-the-Oven-Step-13.jpg"
+                }
+            ],
+            "name": "Premium Steak",
+            "price": 250000,
+            "category": 3
+        }
+    ]
+}
