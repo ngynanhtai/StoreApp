@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { FOOD_IMAGES } from "../mock-db/image.tsx";
+import { FOOD_IMAGES } from "../mock-db/image";
 
 export default function CategoryListItem(props: any) {
   const { category, onPress } = props;
