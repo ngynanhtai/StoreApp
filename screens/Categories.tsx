@@ -1,5 +1,5 @@
 import { StyleSheet, View, FlatList } from "react-native";
-import CategoryListItem from "../components/CategoryListItem";
+import CategoryListItem from "../components/ListCategory";
 import React from "react";
 import axios from "axios";
 
@@ -37,7 +37,7 @@ export default class CategoriesScreen extends React.Component<any, any> {
             <CategoryListItem
               category={item}
               onPress={() => {
-                navigation.navigate("Category", {
+                navigation.navigate("Product", {
                   categoryName: item.name,
                   categoryId: item.id,
                 });

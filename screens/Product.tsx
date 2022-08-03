@@ -1,9 +1,10 @@
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList, Alert } from "react-native";
 import React from "react";
-import ProductListItem from "../components/ProductListItem";
+import ProductListItem from "../components/ListProduct";
 import axios from "axios";
+import { AddToCart } from "../service/CartService";
 
-export default class CategoryScreen extends React.Component<any, any> {
+export default class ProductScreen extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     const { route, navigation } = props;
@@ -38,7 +39,14 @@ export default class CategoryScreen extends React.Component<any, any> {
           renderItem={({ item }) => (
             <View style={styles.wrapper}>
               <View style={styles.product}>
-                <ProductListItem product={item} />
+                <ProductListItem
+                  product={item}
+                  onPress={(item: any) => {
+                    AddToCart(item);
+                    Alert.alert("Add to cart successfully !");
+                    alert("Add to cart successfully !");
+                  }}
+                />
               </View>
             </View>
           )}

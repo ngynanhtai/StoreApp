@@ -2,8 +2,8 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { formatPrice } from "../utils/number";
 
-export default function ProductListItem(props: any) {
-  const { product } = props;
+export default function ListProduct(props: any) {
+  const { product, onPress } = props;
   return (
     <View style={styles.shadow}>
       <View style={styles.container}>
@@ -15,7 +15,7 @@ export default function ProductListItem(props: any) {
           <Text style={styles.title}>{product.name}</Text>
           <View style={styles.priceRow}>
             <Text style={styles.price}>{formatPrice(product.price)}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onPress}>
               <Text style={styles.cartText}>MUA +</Text>
             </TouchableOpacity>
           </View>
