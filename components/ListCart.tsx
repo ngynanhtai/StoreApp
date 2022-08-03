@@ -1,10 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
-import { useState } from "react";
 import { formatPrice, formatLongString } from "../utils/format";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon1 from "../assets/icon01.png";
-import { AddToCart, GetQuantityArray } from "../service/CartService";
 
 export default function ListCart(props: any) {
   const { cart, quantityArray } = props;
@@ -35,11 +33,11 @@ export default function ListCart(props: any) {
               // quantityArray.push(quantityArray as never);
             }}
           >
-            <Ionicons name="ios-add-circle" size={22}></Ionicons>
+            <Ionicons name="ios-remove-circle" size={22}></Ionicons>
           </TouchableOpacity>
           <Text style={{ fontSize: 18 }}>{quantity}</Text>
           <TouchableOpacity activeOpacity={0.5}>
-            <Ionicons name="ios-remove-circle" size={22}></Ionicons>
+            <Ionicons name="ios-add-circle" size={22}></Ionicons>
           </TouchableOpacity>
         </Text>
       </View>

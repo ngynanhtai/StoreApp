@@ -1,32 +1,37 @@
 import React from "react";
-import { useState } from "react";
-import { useFocusEffect } from "@react-navigation/native";
-import { View, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet, RefreshControl } from "react-native";
 import ListCart from "../components/ListCart";
 import { GetCart, GetQuantityArray } from "../service/CartService";
 
 export default class CartScreen extends React.Component<any, any> {
   constructor(props: any) {
-    var cart: [] = [];
-    var quantityArray: [] = [];
-    useFocusEffect(
-      React.useCallback(() => {
-        const test = () => {
-          cart = GetCart();
-          quantityArray = GetQuantityArray();
-        };
-        return () => test();
-      }, [GetCart(), GetQuantityArray()])
-    );
     super(props);
     this.state = {
-      cart: cart,
-      quantityArray: quantityArray,
+      cart: GetCart(),
+      quantityArray: [],
     };
   }
 
+  componentDidMount() {
+    const { navigation } = this.props;
+    navigation.addListener("tabPress", (e: any) => {
+      this.setState({
+        quantityArray: GetQuantityArray(),
+      });
+    });
+  }
+
   render() {
-    const { cart, quantityArray } = this.state;
+    const { cart, refresh } = this.state;
+
+    const onPullRefresh = () => {
+      refresh(true);
+
+      setTimeout(() => {
+        refresh(false);
+      }, 200);
+    };
+    console.log(GetQuantityArray());
     return (
       <View style={styles.container}>
         <FlatList
@@ -34,10 +39,15 @@ export default class CartScreen extends React.Component<any, any> {
           data={cart}
           keyExtractor={(item) => `${item.id}`}
           renderItem={({ item }) => (
-            <ListCart cart={item} quantityArray={quantityArray} />
+            <ListCart cart={item} quantityArray={GetQuantityArray()} />
           )}
+          refreshControl={
+            <RefreshControl
+              refreshing={refresh}
+              onRefresh={() => onPullRefresh()}
+            />
+          }
         ></FlatList>
-        {/* <ListCart style={styles.flatList} /> */}
       </View>
     );
   }
