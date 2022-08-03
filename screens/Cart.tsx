@@ -1,26 +1,43 @@
 import React from "react";
+import { useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import { View, FlatList, StyleSheet } from "react-native";
 import ListCart from "../components/ListCart";
-import { AddToCart, GetCart } from "../service/CartService";
+import { GetCart, GetQuantityArray } from "../service/CartService";
 
-export default class CartScreen extends React.Component<{}, any> {
+export default class CartScreen extends React.Component<any, any> {
   constructor(props: any) {
+    var cart: [] = [];
+    var quantityArray: [] = [];
+    useFocusEffect(
+      React.useCallback(() => {
+        const test = () => {
+          cart = GetCart();
+          quantityArray = GetQuantityArray();
+        };
+        return () => test();
+      }, [GetCart(), GetQuantityArray()])
+    );
     super(props);
     this.state = {
-      cart: GetCart(),
+      cart: cart,
+      quantityArray: quantityArray,
     };
   }
 
   render() {
-    const { cart } = this.state;
+    const { cart, quantityArray } = this.state;
     return (
       <View style={styles.container}>
         <FlatList
           style={styles.flatList}
           data={cart}
           keyExtractor={(item) => `${item.id}`}
-          renderItem={({ item }) => <ListCart cart={item} />}
+          renderItem={({ item }) => (
+            <ListCart cart={item} quantityArray={quantityArray} />
+          )}
         ></FlatList>
+        {/* <ListCart style={styles.flatList} /> */}
       </View>
     );
   }
@@ -29,9 +46,7 @@ export default class CartScreen extends React.Component<{}, any> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "stretch",
     backgroundColor: "#fff",
-    justifyContent: "center",
     paddingTop: 16,
   },
   flatList: {

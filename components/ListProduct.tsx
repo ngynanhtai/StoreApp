@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { formatPrice } from "../utils/number";
+import { formatPrice } from "../utils/format";
 
 export default function ListProduct(props: any) {
   const { product, onPress } = props;

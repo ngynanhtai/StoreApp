@@ -41,7 +41,7 @@ export default class ProductScreen extends React.Component<any, any> {
               <View style={styles.product}>
                 <ProductListItem
                   product={item}
-                  onPress={(item: any) => {
+                  onPress={() => {
                     AddToCart(item);
                     Alert.alert("Add to cart successfully !");
                     alert("Add to cart successfully !");
